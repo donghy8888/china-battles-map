@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1c1917" />
+    <title>中国历代战役图</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script type="module" crossorigin src="./assets/index-DFFqQg4u.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DxiWW2vr.css">
+  </head>
+  <body>
+    <div id="map" aria-label="中国历代战役地图"></div>
+
+    <header class="topbar">
+      <div class="topbar-title">
+        <p class="kicker">今地 · 古战</p>
+        <h1>中国历代战役图</h1>
+      </div>
+      <p class="count-pill" id="count-mobile" aria-live="polite">载入中</p>
+      <button type="button" class="top-btn" id="open-sheet" aria-expanded="false" aria-controls="panel">
+        筛选与省份
+      </button>
+    </header>
+
+    <aside id="panel" aria-label="筛选与统计">
+      <div class="panel-head">
+        <p class="kicker">今地 · 古战</p>
+        <h1>中国历代战役图</h1>
+        <p class="lede">从传说时代到一九五〇年代初，看中国大地上哪里打仗最密。</p>
+        <p class="count-pill" id="count" aria-live="polite">载入中</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" role="tab" id="tab-filter" aria-selected="true" aria-controls="pane-filter">筛选</button>
+        <button type="button" class="tab" role="tab" id="tab-rank" aria-selected="false" aria-controls="pane-rank">省份</button>
+      </div>
+
+      <div id="pane-filter" class="pane" role="tabpanel">
+        <label class="field">
+          <span>搜索</span>
+          <input id="q" type="search" placeholder="战役、对手、省份" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span>时代</span>
+          <select id="era"></select>
+        </label>
+
+        <label class="field">
+          <span>战役</span>
+          <select id="campaign">
+            <option value="">全部战役</option>
+          </select>
+        </label>
+
+        <div class="field">
+          <div class="field-label">
+            <span>年份</span>
+            <span id="year-readout"></span>
+          </div>
+          <div class="range">
+            <div class="range-track" aria-hidden="true"><div id="range-fill"></div></div>
+            <input id="year-min" type="range" aria-label="起始年份" />
+            <input id="year-max" type="range" aria-label="结束年份" />
+          </div>
+        </div>
+
+        <div class="toggles">
+          <button type="button" id="heat-btn" class="toggle" aria-pressed="false">热力图</button>
+          <button type="button" id="reset-view" class="toggle ghost">回到全国</button>
+        </div>
+
+        <div class="field">
+          <span class="field-label"><span>底图</span></span>
+          <div class="seg" role="group" aria-label="底图">
+            <button type="button" id="tile-gaode" class="seg-btn active" aria-pressed="true">高德</button>
+            <button type="button" id="tile-fallback" class="seg-btn" aria-pressed="false">备用</button>
+          </div>
+          <p class="hint" id="tile-hint">高德为 GCJ-02，点位已纠偏。备用为 Esri 街道图（WGS84）。</p>
+        </div>
+      </div>
+
+      <div id="pane-rank" class="pane hidden" role="tabpanel">
+        <h2 class="rank-title">省份排名</h2>
+        <p class="rank-lead">按当前筛选统计。点一行，地图会缩放到该省的战役。</p>
+        <div id="ranks" class="ranks"></div>
+      </div>
+
+      <div class="legend" id="legend"></div>
+
+      <footer class="disclaimer">
+        <p>
+          坐标是战役发生地对应的<strong>现代大致位置</strong>，不是考古实测点。本图是便于观察分布的<strong>精选样本</strong>，只收发生在今中国境内、记载较清楚的战役，不是历史上的全部战争。
+        </p>
+        <p>阪泉、涿鹿标为传说；地点或记载有争议的条目会在弹窗里注明。</p>
+      </footer>
+
+      <button type="button" class="sheet-close" id="close-sheet">收起</button>
+    </aside>
+
+    <div id="empty" class="empty hidden" role="status">没有符合条件的战役</div>
+  </body>
+</html>
